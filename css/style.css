@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'fraunces';
+  src: url('/assets/fonts/fraunces/Fraunces-VariableFont_SOFT\,WONK\,opsz\,wght.ttf');
+}
+
+@font-face {
+  font-family: 'manrope';
+  src: url('/assets/fonts/manrope/Manrope-VariableFont_wght.ttf');
+}
+
+:root {
+  /* Colors */
+  --clr-shade-darker: #24053E;
+  --clr-shade-lighter: #584D62;
+  --clr-primary: #44FFA1;
+  --clr-tint-darker: #FCF8FF;
+  --clr-tint-lighter: #FFFFFF;
+
+  /* Typography */
+  --ff-serif: "fraunces", serif;
+  --ff-sans: "manrope", sans-serif;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --fs-0: 1.125rem;
+  --fs-1: 2rem;
+  --fs-2: 3.5rem;
+  --fs-3: 5rem;
+  --lh-0: 2;
+  --lh-1: 1.25;
+  --lh-2: 1.14;
+  --lh-3: 1;
+}
+
+/* GLOBAL STYLES */
+body {
+  font-family: var(--ff-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-0);
+  line-height: var(--lh-0);
+}
+
+/* CHANGE ME! 
+  quick fix before proper flow is added */
+main * + *,
+span {
+  margin-block-start: 1em;
+}
+
+h1,
+h2,
+span {
+  font-family: var(--ff-serif);
+  font-weight: var(--fw-semibold);
+}
+
+h1 {
+  font-size: var(--fs-3);
+  line-height: var(--lh-3);
+  max-inline-size: 15ch;
+
+  /* CHANGE ME!
+     quick fix before proper flow is added */
+  margin-block-start: 0;
+}
+
+h2 {
+  font-size: var(--fs-1);
+  line-height: var(--lh-1);
+  max-inline-size: 30ch;
+}
+
+p {
+  max-inline-size: 55ch;
+}
+
+span {
+  font-size: var(--fs-1);
+}
+
+em {
+  font-style: normal;
+}
+
+a {
+  font-weight: var(--fw-semibold);
+  /* color: var(--clr-tint-lighter); */
+}
+
+img {
+  max-width: 3rem;
+}
+
+li {
+  list-style: none;
+}
+
+/* COMPOSITION */
+.center-wrapper {
+  
+}
+
+/* UTILITY */
+.circle-text {
+  display: inline-block;
+  width: 1.75em;
+  height: 1.75em;
+  text-align: center;
+  line-height: 1.65;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.alt-color-scheme {
+  color: var(--clr-tint-lighter);
+  background-color: var(--clr-shade-darker);
+}
+
+.underline-offset {
+  --thickness: 0.25ex;
+  --offset: 0.75ex;
+  text-decoration: underline;
+  text-decoration-color: var(--clr-primary);
+  text-decoration-thickness: var(--thickness);
+  text-underline-offset: var(--offset);
+  text-decoration-skip-ink: none;
+}
+
+em.underline-offset {
+  --thickness: 0.1ex;
+  --offset: 0.25ex;
+}
+
+/* BLOCK */
+
+
+/* EXCEPTION */
+a[data-linktype="button"] {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--clr-shade-darker);
+  background-color: var(--clr-primary);
+  padding: 1em;
+}

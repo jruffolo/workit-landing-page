@@ -5,35 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
   
   <title>Frontend Mentor | Workit landing page</title>
 </head>
 <body>
-  <header>
+  <header class="alt-color-scheme">
     <div class="cluster">
       <img src="assets/images/logo-light.svg" alt="Workit Logo">
-      <a href="#">Apply for access</a>
+      <a href="#" class="underline-offset">Apply for access</a>
     </div>
   </header>
   <main>
-    <h1>Data tailored to your needs.</h1>
-
-    <a href="#">Learn more</a>
+    <article id="hero" class="alt-color-scheme">
+      <h1>Data <em class="underline-offset">tailored</em> to your needs.</h1>
+      <a href="#" data-linktype="button">Learn more</a>
+    </article>
     
     <article class="switcher" id="features">
       <div class="switcher">
-        <span>1</span>
+        <span class="circle-text">1</span>
         <div>
           <h2>Actionable insights</h2>
-          
           <p>
-            Optimize your products, improve customer satisfaction and stay ahead of the competition
-            <div class="switcher">with our product data analytics.</div>
+            Optimize your products, improve customer satisfaction and stay ahead of the competition with our product data analytics.</div>
           </p>
         </div>
       </div>
       <div class="switcher">
-        <span>2</span>
+        <span class="circle-text">2</span>
         <div>
           <h2>Data-driven decisions</h2>
           <p>
@@ -43,7 +44,7 @@
         </div>
       </div>
       <div class="switcher">
-        <span>3</span>
+        <span class="circle-text">3</span>
         <div>
           <h2>Always affordable</h2>
           <p>
@@ -55,13 +56,16 @@
     </article>
   
     <article id="test">
-      <h2>Be the first to test</h2>
-      <p>
-        Hi, I'm Louis Graham, the founder of the company. Book a demo call with me to become a
-        beta tester for our app and kickstart your company. Apply for access below and I’ll be
-        in touch to schedule a call.
-      </p>
-      <a href="#">Apply for access</a>
+      <img src="assets/images/image-founder.webp" alt="">
+      <div class="alt-color-scheme">
+        <h2>Be the first to test</h2>
+        <p>
+          Hi, I'm Louis Graham, the founder of the company. Book a demo call with me to become a
+          beta tester for our app and kickstart your company. Apply for access below and I’ll be
+          in touch to schedule a call.
+        </p>
+        <a href="#" data-linktype="button">Apply for access</a>
+      </div>
     </article>
   </main>
   <footer>
