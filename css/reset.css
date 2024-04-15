@@ -28,6 +28,9 @@ ol[role='list'] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+
+  /* Firefox has 8px margin default on body */
+  margin: 0;
 }
 
 /* Set shorter line heights on headings and interactive elements */

@@ -37,13 +37,28 @@ body {
   font-weight: var(--fw-regular);
   font-size: var(--fs-0);
   line-height: var(--lh-0);
+  
+  /* TEMPORARY!
+     may need changing depending on max-widths 
+     and how it meshes with the layout */
+  text-align: center;
+}
+
+::selection {
+  color: var(--clr-shade-darker);
+  background-color: var(--clr-primary);
 }
 
 /* CHANGE ME! 
   quick fix before proper flow is added */
-main * + *,
+/* main * + *,
 span {
   margin-block-start: 1em;
+} */
+
+article {
+  /* for curved divider SVGs */
+  position: relative;
 }
 
 h1,
@@ -81,13 +96,23 @@ em {
   font-style: normal;
 }
 
-a {
-  font-weight: var(--fw-semibold);
-  /* color: var(--clr-tint-lighter); */
+em:hover {
+  font-style: italic;
 }
 
+a {
+  font-weight: var(--fw-semibold);
+  color: var(--clr-tint-lighter);
+}
+
+a:hover {
+  color: var(--clr-primary);
+}
+
+/* CHANGE ME!
+   placeholder value */
 img {
-  max-width: 3rem;
+  max-width: 5rem;
 }
 
 li {
@@ -95,11 +120,73 @@ li {
 }
 
 /* COMPOSITION */
-.center-wrapper {
-  
+
+.flow > * + * {
+  margin-block-start: var(--flow-space, 1em);
+}
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+	/* optional padding equal to the gap value */
+  /* placeholder value is set */
+  padding-inline: var(--space, max(calc(10vw - 3rem), 1rem));
+	/* optional justify-content property */
+  justify-content: space-between;
+	/* optional align-items property */
+}
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space, 1rem);
+  --threshold: 60rem;
+}
+
+.switcher > * {
+  flex-grow: 1;
+  flex-basis: calc((var(--threshold) - 100%) * 999);
+}
+
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1, 1rem);
+  justify-content: center;
+}
+
+/* first-child = sidebar */
+/* last-child = not sidebar */
+/* swap order to swap sidebar from left to right */
+
+.with-sidebar > :first-child {
+	/* set flex-basis to set width of the sidebar */
+	/* remove flex-basis for intrinsic sizing of sidebar */
+  flex-basis: 5rem; 
+  flex-grow: 1;
+  align-self: center;
+}
+
+.with-sidebar > :last-child {
+	/* adjust min-inline-size to set the wrapping breakpoint */
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 80%;
 }
 
 /* UTILITY */
+.section-padding {
+  padding-inline: 1rem;
+  padding-block: 5rem;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .circle-text {
   display: inline-block;
   width: 1.75em;
@@ -110,9 +197,17 @@ li {
   border-radius: 50%;
 }
 
-.alt-color-scheme {
+.color-scheme-dark {
   color: var(--clr-tint-lighter);
   background-color: var(--clr-shade-darker);
+}
+
+.bg-color-tint-darker {
+  background-color: var(--clr-tint-darker);
+}
+
+.bg-color-tint-lighter {
+  background-color: var(--clr-tint-lighter);
 }
 
 .underline-offset {
@@ -131,7 +226,11 @@ em.underline-offset {
 }
 
 /* BLOCK */
-
+/* UPDATE ME!
+   prevents jittering at largest screen size */
+#features {
+  min-block-size: 32rem;
+}
 
 /* EXCEPTION */
 a[data-linktype="button"] {
@@ -139,5 +238,100 @@ a[data-linktype="button"] {
   text-decoration: none;
   color: var(--clr-shade-darker);
   background-color: var(--clr-primary);
-  padding: 1em;
+  padding-block: 0.75em;
+  padding-inline: 1.25em;
+}
+
+a[data-linktype="button"]:hover {
+  color: var(--clr-primary);
+  background-color: var(--clr-shade-darker);
+  padding-block: calc(0.75em - 2px);
+  padding-inline: calc(1.25em - 2px);
+  border: 2px solid var(--clr-primary);
+}
+
+/* Containers for text-align and centering in #features */
+.container[data-containerName="switcher"] {
+  container-name: switcher;
+  container-type: inline-size;
+}
+
+.container[data-containerName="sidebar"] {
+  container-name: sidebar;
+  container-type: inline-size;
+}
+
+/* hard-coded but could potentially make fluid with variables 
+   min-width is (sidebar basis + gap) * 1 / (1 - main content percentage) 
+   for example (5rem + 1 rem) * 1 / (1 - .8) = 30rem */
+
+@container switcher (min-width: 30rem) and (max-width: 60rem) {
+  /* sets a max width on the sidebar containers when in un-stacked mode
+     so that they can be center-aligned with margin auto 
+     also sets text-align*/
+  .with-sidebar {
+    max-width: 40rem;
+    margin-inline: auto;
+    text-align: start;
+  }
+}
+
+@container switcher (min-width: 60rem) {
+  /* prevents the sidebar layout from unstacking at large screen sizes */
+  .with-sidebar {
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+  .with-sidebar > :last-child {
+    min-inline-size: 100%;
+  }
+}
+
+
+/* MISCELLANEOUS */
+/* Curved Shape Dividers from shapedivider.app */
+
+/* FIX ME!
+   background color shows through margin of next section */
+.custom-shape-divider-bottom-1712942751 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1712942751 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 25vw);
+  margin-inline-start: -12.5vw;
+  height: 34px;
+}
+
+.custom-shape-divider-bottom-1712942751 .shape-fill {
+  fill: #FCF8FF;
+}
+
+.custom-shape-divider-bottom-1712942565 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  fill-opacity: 100%;
+}
+
+.custom-shape-divider-bottom-1712942565 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 25vw);
+  margin-left: -12.5vw;
+  height: 34px;
+}
+
+.custom-shape-divider-bottom-1712942565 .shape-fill {
+  fill: #FFFFFF;
 }
