@@ -141,7 +141,9 @@ li {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space, 1rem);
-  --threshold: 60rem;
+  --threshold: 66rem;
+  max-inline-size: 72rem;
+  margin-inline: auto;
 }
 
 .switcher > * {
@@ -195,6 +197,15 @@ li {
   line-height: 1.65;
   border: 1px solid black;
   border-radius: 50%;
+  margin-block-end: auto;
+}
+
+.margin-block-start-medium {
+  margin-block-start: 3rem;
+}
+
+.margin-block-start-large {
+  margin-block-start: 5rem;
 }
 
 .color-scheme-dark {
@@ -225,6 +236,13 @@ em.underline-offset {
   --offset: 0.25ex;
 }
 
+.offset-image-container {
+  position: relative;
+  --image-size: clamp(16rem, 20rem + 20vw, 36rem);
+  block-size: 0;
+  inline-size: var(--image-size);
+}
+
 /* BLOCK */
 /* UPDATE ME!
    prevents jittering at largest screen size */
@@ -250,6 +268,18 @@ a[data-linktype="button"]:hover {
   border: 2px solid var(--clr-primary);
 }
 
+.offset-image-container:has(#smartphone) {
+  margin-block-start: 10rem;
+  padding-left: 20px;
+}
+
+#smartphone {
+  position: absolute;
+  max-inline-size: var(--image-size);
+  z-index: 1;
+  top: calc(100% - calc(0.2 * var(--image-size)));
+}
+
 /* Containers for text-align and centering in #features */
 .container[data-containerName="switcher"] {
   container-name: switcher;
@@ -265,7 +295,7 @@ a[data-linktype="button"]:hover {
    min-width is (sidebar basis + gap) * 1 / (1 - main content percentage) 
    for example (5rem + 1 rem) * 1 / (1 - .8) = 30rem */
 
-@container switcher (min-width: 30rem) and (max-width: 60rem) {
+@container switcher (min-width: 30rem) and (max-width: 66rem) {
   /* sets a max width on the sidebar containers when in un-stacked mode
      so that they can be center-aligned with margin auto 
      also sets text-align*/
@@ -276,14 +306,19 @@ a[data-linktype="button"]:hover {
   }
 }
 
-@container switcher (min-width: 60rem) {
+@container switcher (min-width: 66rem) {
   /* prevents the sidebar layout from unstacking at large screen sizes */
   .with-sidebar {
-    max-width: 20rem;
+    max-width: 24rem;
     margin-inline: auto;
   }
+
   .with-sidebar > :last-child {
     min-inline-size: 100%;
+  }
+
+  .margin-block-start-medium {
+    margin-block-start: unset;
   }
 }
 
