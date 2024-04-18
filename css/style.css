@@ -112,7 +112,7 @@ a:hover {
 /* CHANGE ME!
    placeholder value */
 img {
-  max-width: 5rem;
+  max-width: 25rem;
 }
 
 li {
@@ -250,6 +250,7 @@ em.underline-offset {
   min-block-size: 32rem;
 }
 
+
 /* EXCEPTION */
 a[data-linktype="button"] {
   display: inline-block;
@@ -266,6 +267,11 @@ a[data-linktype="button"]:hover {
   padding-block: calc(0.75em - 2px);
   padding-inline: calc(1.25em - 2px);
   border: 2px solid var(--clr-primary);
+}
+
+footer {
+  --space: 2em;
+  --flow-space: 3em;
 }
 
 .offset-image-container:has(#smartphone) {
