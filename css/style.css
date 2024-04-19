@@ -37,7 +37,7 @@ body {
   font-weight: var(--fw-regular);
   font-size: var(--fs-0);
   line-height: var(--lh-0);
-  
+  background-color: var(--clr-tint-darker);
   /* TEMPORARY!
      may need changing depending on max-widths 
      and how it meshes with the layout */
@@ -48,13 +48,6 @@ body {
   color: var(--clr-shade-darker);
   background-color: var(--clr-primary);
 }
-
-/* CHANGE ME! 
-  quick fix before proper flow is added */
-/* main * + *,
-span {
-  margin-block-start: 1em;
-} */
 
 article {
   /* for curved divider SVGs */
@@ -96,10 +89,6 @@ em {
   font-style: normal;
 }
 
-em:hover {
-  font-style: italic;
-}
-
 a {
   font-weight: var(--fw-semibold);
   color: var(--clr-tint-lighter);
@@ -109,10 +98,9 @@ a:hover {
   color: var(--clr-primary);
 }
 
-/* CHANGE ME!
-   placeholder value */
 img {
-  max-width: 25rem;
+  --max-img-width: 25rem;
+  max-width: var(--max-img-width);
 }
 
 li {
@@ -125,13 +113,19 @@ li {
   margin-block-start: var(--flow-space, 1em);
 }
 
+.wrapper {
+  position: relative;
+  max-inline-size: 80rem;
+  margin-inline: auto;
+}
+
 .cluster {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space, 1rem);
 	/* optional padding equal to the gap value */
   /* placeholder value is set */
-  padding-inline: var(--space, max(calc(10vw - 3rem), 1rem));
+  padding-inline: var(--space, max(calc(5vw - 3rem), 1rem));
 	/* optional justify-content property */
   justify-content: space-between;
 	/* optional align-items property */
@@ -180,7 +174,7 @@ li {
 /* UTILITY */
 .section-padding {
   padding-inline: 1rem;
-  padding-block: 5rem;
+  padding-block: 5em;
 }
 
 .center-content {
@@ -197,7 +191,6 @@ li {
   line-height: 1.65;
   border: 1px solid black;
   border-radius: 50%;
-  margin-block-end: auto;
 }
 
 .margin-block-start-medium {
@@ -238,18 +231,23 @@ em.underline-offset {
 
 .offset-image-container {
   position: relative;
-  --image-size: clamp(16rem, 20rem + 20vw, 36rem);
+  --image-size: clamp(16rem, 20rem + 20vw, 40rem);
   block-size: 0;
   inline-size: var(--image-size);
 }
 
+.position-absolute {
+  position: absolute;
+}
+
 /* BLOCK */
-/* UPDATE ME!
-   prevents jittering at largest screen size */
 #features {
   min-block-size: 32rem;
 }
 
+#test {
+  background-color: var(--clr-tint-lighter);
+}
 
 /* EXCEPTION */
 a[data-linktype="button"] {
@@ -259,6 +257,7 @@ a[data-linktype="button"] {
   background-color: var(--clr-primary);
   padding-block: 0.75em;
   padding-inline: 1.25em;
+  margin-block-start: 2rem;
 }
 
 a[data-linktype="button"]:hover {
@@ -272,6 +271,7 @@ a[data-linktype="button"]:hover {
 footer {
   --space: 2em;
   --flow-space: 3em;
+  background-color: var(--clr-tint-lighter);
 }
 
 .offset-image-container:has(#smartphone) {
@@ -280,10 +280,44 @@ footer {
 }
 
 #smartphone {
-  position: absolute;
   max-inline-size: var(--image-size);
   z-index: 1;
-  top: calc(100% - calc(0.2 * var(--image-size)));
+  inset-block-start: calc(100% - calc(0.2 * var(--image-size)));
+}
+
+#founder {
+  inset-block-start: -20rem;
+  inset-inline-start: calc(50cqw - calc(var(--max-img-width) / 2));
+}
+
+.wrapper:has(#founder) {
+  margin-block-start: calc(25rem - 10cqw);
+  max-inline-size: 66rem;
+  background-color: var(--clr-tint-lighter);
+}
+
+.wrapper:has(#founder) > :last-child {
+  position: relative;
+  padding-block: 3rem;
+
+  h2 {
+    margin-block-start: 0;
+  }
+}
+
+#spiral-1 {
+  inset-block-start: 4rem;
+  inset-inline-start: calc(-20rem + 10cqw);
+}
+
+#spiral-2 {
+  inset-block-start: 16rem;
+  inset-inline-start: calc(100% - 8cqw);
+}
+
+#spiral-3 {
+  inset-inline-end: 0;
+  inset-block-end: 0;
 }
 
 /* Containers for text-align and centering in #features */
@@ -294,6 +328,11 @@ footer {
 
 .container[data-containerName="sidebar"] {
   container-name: sidebar;
+  container-type: inline-size;
+}
+
+.container[data-containerName="founder"] {
+  container-name: founder;
   container-type: inline-size;
 }
 
@@ -328,12 +367,32 @@ footer {
   }
 }
 
+@container founder (min-width: 66rem) {
+  #founder {
+    inset-inline-start: 1rem;
+    inset-block-start: -12rem;
+  }
 
+  .wrapper:has(#founder) > :last-child {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-inline: 3rem;
+    margin-inline-start: 35cqw;
+    margin-inline-end: 0;
+    max-inline-size: 52rem;
+
+    h2 {
+      font-size: var(--fs-3);
+    }
+  }
+}
 /* MISCELLANEOUS */
 /* Curved Shape Dividers from shapedivider.app */
 
-/* FIX ME!
-   background color shows through margin of next section */
+/* Purple */
 .custom-shape-divider-bottom-1712942751 {
   position: absolute;
   bottom: 0;
@@ -346,15 +405,16 @@ footer {
 .custom-shape-divider-bottom-1712942751 svg {
   position: relative;
   display: block;
-  width: calc(100% + 25vw);
-  margin-inline-start: -12.5vw;
-  height: 34px;
+  width: calc(100% + 20vw);
+  margin-inline-start: -10vw;
+  height: 68px;
 }
 
 .custom-shape-divider-bottom-1712942751 .shape-fill {
   fill: #FCF8FF;
 }
 
+/* Cream */
 .custom-shape-divider-bottom-1712942565 {
   position: absolute;
   bottom: 0;
@@ -368,9 +428,9 @@ footer {
 .custom-shape-divider-bottom-1712942565 svg {
   position: relative;
   display: block;
-  width: calc(100% + 25vw);
-  margin-left: -12.5vw;
-  height: 34px;
+  width: calc(100% + 20vw);
+  margin-inline-start: -10vw;
+  height: 68px;
 }
 
 .custom-shape-divider-bottom-1712942565 .shape-fill {

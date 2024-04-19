@@ -12,24 +12,26 @@
 </head>
 <body>
   <header class="color-scheme-dark">
-    <div class="cluster">
+    <div class="wrapper cluster">
       <img src="assets/images/logo-light.svg" alt="Workit Logo">
       <a href="#" class="underline-offset">Apply for access</a>
     </div>
   </header>
   <main>
-    <article id="hero" class=" [ flow ] [ section-padding center-content ] [ color-scheme-dark ]">
+    <article id="hero" class="[ flow ] [ section-padding center-content ] [ color-scheme-dark ]">
       <h1>Data <em class="underline-offset">tailored</em> to your needs.</h1>
       <a href="#" data-linktype="button">Learn more</a>
-      <div class="offset-image-container"><img id="smartphone" src="assets/images/image-hero.webp" alt="Illustration of a smartphone displaying an app."></div>
+      <img id="spiral-1" class="position-absolute" src="assets/images/bg-pattern-1.svg" alt="Decorative spiral illustration 1">
+      <img id="spiral-2" class="position-absolute" src="assets/images/bg-pattern-2.svg" alt="Decorative spiral illustration 2">
+      <div class="offset-image-container"><img id="smartphone" class="position-absolute" src="assets/images/image-hero.webp" alt="Illustration of a smartphone displaying an app."></div>
       <div class="custom-shape-divider-bottom-1712942751">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z" class="shape-fill"></path>
         </svg>
     </div>
     </article>
-    <article class="[ switcher container ] [ section-padding margin-block-start-large ] [ bg-color-tint-darker ]" data-containerName="switcher" id="features">
-      <div class="[ with-sidebar ]">
+    <article role="list" id="features" class="[ switcher container ] [ section-padding margin-block-start-large ] [ bg-color-tint-darker ]" data-containerName="switcher">
+      <div role="listitem" class="[ with-sidebar ]">
         <div><span class="circle-text">1</span></div>
         <div class="[ flow ]">
           <h2>Actionable insights</h2>
@@ -38,7 +40,7 @@
           </p>
         </div>
       </div>
-      <div class="[ with-sidebar ]">
+      <div role="listitem" class="[ with-sidebar ]">
         <div class="margin-block-start-medium"><span class="circle-text">2</span></div>
         <div class="[ flow ]">
           <h2>Data-driven decisions</h2>
@@ -48,7 +50,7 @@
           </p>
         </div>
       </div>
-      <div class="[ with-sidebar ]">
+      <div role="listitem" class="[ with-sidebar ]">
         <div class="margin-block-start-medium"><span class="circle-text">3</span></div>
         <div class="[ flow ]">
           <h2>Always affordable</h2>
@@ -64,16 +66,19 @@
         </svg>
       </div>
     </article>
-    <article id="test" class="[ center-content ] [ bg-color-tint-lighter ]">
-      <img src="assets/images/image-founder.webp" alt="">
-      <div class="[ flow ] [ color-scheme-dark center-content section-padding ]">
-        <h2>Be the first to test</h2>
-        <p>
-          Hi, I'm Louis Graham, the founder of the company. Book a demo call with me to become a
-          beta tester for our app and kickstart your company. Apply for access below and I’ll be
-          in touch to schedule a call.
-        </p>
-        <a href="#" data-linktype="button">Apply for access</a>
+    <article id="test" class="[ bg-color-tint-lighter ]">
+      <div class="wrapper container" data-containerName="founder">
+        <img id="founder" class="position-absolute" src="assets/images/image-founder.webp" alt="Photo of Louis Graham, the founder of Workit">
+        <div class="[ flow ] [ color-scheme-dark center-content ]">
+          <h2>Be the first to test</h2>
+          <p>
+            Hi, I'm Louis Graham, the founder of the company. Book a demo call with me to become a
+            beta tester for our app and kickstart your company. Apply for access below and I’ll be
+            in touch to schedule a call.
+          </p>
+          <a href="#" data-linktype="button">Apply for access</a>
+          <img id="spiral-3" class="position-absolute" src="assets/images/bg-pattern-3.svg" alt="Decorative spiral image 3">
+        </div>
       </div>
     </article>
   </main>
