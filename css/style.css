@@ -13,7 +13,7 @@
   --clr-shade-darker: #24053E;
   --clr-shade-lighter: #584D62;
   --clr-primary: #44FFA1;
-  --clr-tint-darker: #FCF8FF;
+  --clr-tint-darker: #fcf7ff;
   --clr-tint-lighter: #FFFFFF;
 
   /* Typography */
@@ -37,11 +37,8 @@ body {
   font-weight: var(--fw-regular);
   font-size: var(--fs-0);
   line-height: var(--lh-0);
-  background-color: var(--clr-tint-darker);
-  /* TEMPORARY!
-     may need changing depending on max-widths 
-     and how it meshes with the layout */
   text-align: center;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -136,7 +133,7 @@ li {
   flex-wrap: wrap;
   gap: var(--space, 1rem);
   --threshold: 66rem;
-  max-inline-size: 72rem;
+  max-inline-size: 70rem;
   margin-inline: auto;
 }
 
@@ -238,11 +235,34 @@ em.underline-offset {
 
 .position-absolute {
   position: absolute;
+  pointer-events: none;
 }
 
 /* BLOCK */
+#hero::after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset-block-end: -100px;
+  width: 100%;
+  height: 100px;
+  background-color: var(--clr-tint-darker);
+}
+
 #features {
   min-block-size: 32rem;
+}
+
+#features::after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 2;
+  inset-inline-start: -50%;
+  inset-block-end: -500px;
+  width: 5000px;
+  height: 500px;
+  background-color: #FFFFFF;
 }
 
 #test {
@@ -291,7 +311,7 @@ footer {
 }
 
 .wrapper:has(#founder) {
-  margin-block-start: calc(25rem - 10cqw);
+  margin-block-start: calc(30rem - 15cqw);
   max-inline-size: 66rem;
   background-color: var(--clr-tint-lighter);
 }
@@ -411,7 +431,7 @@ footer {
 }
 
 .custom-shape-divider-bottom-1712942751 .shape-fill {
-  fill: #FCF8FF;
+  fill: var(--clr-tint-darker);
 }
 
 /* Cream */
@@ -434,5 +454,5 @@ footer {
 }
 
 .custom-shape-divider-bottom-1712942565 .shape-fill {
-  fill: #FFFFFF;
+  fill: var(--clr-tint-lighter);
 }
