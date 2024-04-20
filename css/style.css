@@ -38,6 +38,10 @@ body {
   font-size: var(--fs-0);
   line-height: var(--lh-0);
   text-align: center;
+}
+
+main {
+  /* Prevents horizontal scrolling from absolute elements */
   overflow-x: hidden;
 }
 
@@ -236,6 +240,10 @@ em.underline-offset {
 .position-absolute {
   position: absolute;
   pointer-events: none;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 /* BLOCK */
